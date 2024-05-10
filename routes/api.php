@@ -20,10 +20,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::middleware('api')->group(function () {
-    Route::prefix('/account')->group(function () {
+    Route::prefix('/accounts')->group(function () {
         Route::get('/',  [AccountController::class, 'get']);
         Route::post('/', [AccountController::class, 'store']);
     });
 
-    Route::post('/transaction', [AccountController::class, 'transaction']);
+    Route::post('/transactions', [AccountController::class, 'transaction']);
 });
