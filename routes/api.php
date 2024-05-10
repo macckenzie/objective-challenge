@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Controller;
+use App\Http\Controllers\Bank\AccountController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,5 +20,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::middleware('api')->group(function () {
+    Route::prefix('/account')->group(function () {
+        Route::get('/',  [AccountController::class, 'get']);
+        Route::post('/', [AccountController::class, 'store']);
+    });
 
+    Route::post('/transaction', [AccountController::class, 'transaction']);
 });
