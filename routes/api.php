@@ -20,8 +20,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::middleware('api')->group(function () {
-    Route::prefix('/accounts')->group(function () {
-        Route::get('/{id}', [AccountController::class, 'find']);
-        Route::post('/',    [AccountController::class, 'store']);
+    Route::prefix('/conta')->group(function () {
+        Route::get('/', [AccountController::class, 'find']);
+        Route::post('/', [AccountController::class, 'store']);
     });
 });
