@@ -1,0 +1,16 @@
+version: '3'
+
+services:
+  objective-app:
+    build: .
+    container_name: objective
+    volumes:
+      - .:/var/www/html
+    ports:
+      - "8000:8000"
+    networks:
+      - main-network
+
+networks:
+  main-network:
+    driver: bridge
