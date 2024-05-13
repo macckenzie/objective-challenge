@@ -1,16 +1,18 @@
 version: '3'
 
 services:
-  objective-app:
-    build: .
-    container_name: objective
-    volumes:
-      - .:/var/www/html
-    ports:
-      - "8000:8000"
-    networks:
-      - main-network
+    objective-app:
+        build: .
+        container_name: objective
+        volumes:
+            - .:/var/www
+        ports:
+            - "8000:8000"
+        networks:
+            - main-network
+        command: sh -c "composer install && php artisan serve --host=0.0.0.0"
 
 networks:
-  main-network:
-    driver: bridge
+    main-network:
+        driver: bridge
+
