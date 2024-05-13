@@ -12,15 +12,22 @@ class BankAccountSeeder extends Seeder
      */
     public function run(): void
     {
+        $now = now();
         Account::insert([
             [
-                'balance' => 0
+                'balance' => 0,
+                'created_at' => $now,
+                'updated_at' => $now
             ],
             [
-                'balance' => 500
+                'balance' => 500,
+                'created_at' => $now,
+                'updated_at' => $now
             ],
             [
-                'balance' => 1000
+                'balance' => 1000,
+                'created_at' => $now,
+                'updated_at' => $now
             ]
         ]);
     }
