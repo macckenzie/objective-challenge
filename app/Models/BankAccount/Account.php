@@ -13,7 +13,9 @@ class Account extends Model
     protected $table = 'bank_accounts';
     protected $primaryKey = 'account_id';
     protected $fillable = [
-        'balance'
+        'balance',
+        'created_at',
+        'updated_at',
     ];
 
     protected function getCreatedAtAttribute()
@@ -23,6 +25,9 @@ class Account extends Model
 
     protected function getUpdatedAtAttribute()
     {
+        if (!$this->attributes['updated_at'])
+            return null;
+
         return Carbon::createFromFormat('Y-m-d H:i:s', $this->attributes['updated_at'])->format('d-m-Y H:i:s');
     }
 }
