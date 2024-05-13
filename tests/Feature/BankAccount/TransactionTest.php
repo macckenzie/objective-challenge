@@ -1,6 +1,6 @@
 <?php
 
-namespace BankAccount;
+namespace Tests\Feature\BankAccount;
 
 use App\Enums\HttpStatus;
 use App\Enums\PaymentType;
