@@ -24,4 +24,6 @@ Route::middleware('api')->group(function () {
         Route::get('/', [AccountController::class, 'find']);
         Route::post('/', [AccountController::class, 'store']);
     });
+
+    Route::post('/transacao', [AccountController::class, 'transaction']);
 });
