@@ -6,6 +6,7 @@ use App\Enums\HttpStatus;
 use App\Http\Repositories\BankAccount\IAccountReposistory;
 use App\Http\Requests\BankAccount\GetRequest;
 use App\Http\Requests\BankAccount\StoreRequest;
+use App\Http\Requests\BankAccount\TransactionRequest;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Routing\Controller as BaseController;
 
@@ -25,6 +26,19 @@ class AccountController extends BaseController
     {
         $account = $this->accountReposistory->store($request);
 
-        return response()->json($account, HttpStatus::CREATED->value);
+        return response()->json([
+            'account_id' => $account->account_id,
+            'balance' => $account->balance
+        ], HttpStatus::CREATED->value);
+    }
+
+    public function transaction(TransactionRequest $request): JsonResponse
+    {
+        $account = $this->accountReposistory->pay($request);
+
+        return response()->json([
+            'account_id' => $account->account_id,
+            'balance' => $account->balance
+        ], HttpStatus::OK->value);
     }
 }
